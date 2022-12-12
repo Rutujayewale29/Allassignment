@@ -26,3 +26,50 @@ mysql> select * from tblparent;
 |        20 | aakash      | banglore  |   53 |        800000 | professor    | NA       |
 +-----------+-------------+-----------+------+---------------+--------------+----------+
 20 rows in set (0.54 sec)
+20 rows in set (0.07 sec)
+mysql> select count(parent_name)from tblparent where annual_income>600000;
++--------------------+
+| count(parent_name) |
++--------------------+
+|                  3 |
++--------------------+
+1 row in set (0.19 sec)
+mysql> select * from tblparent where city="ahmedabad" or city="delhi" or city="mumbai" or city="chennai" or city="banglore";
++-----------+-------------+-----------+------+---------------+--------------+----------+
+| parent_id | parent_name | city      | age  | annual_income | occupation   | email_id |
++-----------+-------------+-----------+------+---------------+--------------+----------+
+|         2 | nisha       | chennai   |   50 |        400000 | teacher      | NA       |
+|         3 | santosh     | delhi     |   50 |        700000 | doctor       | NA       |
+|         4 | ashok       | mumbai    |   47 |        300000 | worker       | NA       |
+|         5 | nitin       | ahmedabad |   47 |        600000 | doctor       | NA       |
+|         6 | keshav      | banglore  |   50 |        400000 | teacher      | NA       |
+|         7 | pooja       | delhi     |   45 |        300000 | advocate     | NA       |
+|         8 | shashi      | chennai   |   48 |        400000 | advocate     | NA       |
+|         9 | nilesh      | banglore  |   46 |        400000 | worker       | NA       |
+|        10 | nikhil      | banglore  |   44 |        500000 | manager      | NA       |
+|        11 | swati       | mumbai    |   47 |        400000 | teacher      | NA       |
+|        12 | preeti      | ahmedabad |   49 |        600000 | doctor       | NA       |
+|        13 | priyanka    | banglore  |   43 |        300000 | advocate     | NA       |
+|        14 | diksha      | chennai   |   49 |        700000 | architecture | NA       |
+|        15 | aditya      | delhi     |   59 |        500000 | police       | NA       |
+|        16 | sanjay      | mumbai    |   55 |        400000 | advocate     | NA       |
+|        17 | shiv        | ahmedabad |   50 |        600000 | actor        | NA       |
+|        18 | raghav      | delhi     |   50 |        400000 | worker       | NA       |
+|        20 | aakash      | banglore  |   53 |        800000 | professor    | NA       |
++-----------+-------------+-----------+------+---------------+--------------+----------+
+18 rows in set (0.07 sec)
+mysql> select * from tblparent where annual_income<500000 and age>45;
++-----------+-------------+----------+------+---------------+------------+----------+
+| parent_id | parent_name | city     | age  | annual_income | occupation | email_id |
++-----------+-------------+----------+------+---------------+------------+----------+
+|         2 | nisha       | chennai  |   50 |        400000 | teacher    | NA       |
+|         4 | ashok       | mumbai   |   47 |        300000 | worker     | NA       |
+|         6 | keshav      | banglore |   50 |        400000 | teacher    | NA       |
+|         8 | shashi      | chennai  |   48 |        400000 | advocate   | NA       |
+|         9 | nilesh      | banglore |   46 |        400000 | worker     | NA       |
+|        11 | swati       | mumbai   |   47 |        400000 | teacher    | NA       |
+|        16 | sanjay      | mumbai   |   55 |        400000 | advocate   | NA       |
+|        18 | raghav      | delhi    |   50 |        400000 | worker     | NA       |
+|        19 | siddharth   | pune     |   53 |        400000 | teacher    | NA       |
++-----------+-------------+----------+------+---------------+------------+----------+
+9 rows in set (0.00 sec)
