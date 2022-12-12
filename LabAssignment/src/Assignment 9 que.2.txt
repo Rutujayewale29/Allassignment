@@ -1,0 +1,41 @@
+mysql> select * from company_info;
++------------+----------------+---------------+
+| company_id | company_name   | company_city  |
++------------+----------------+---------------+
+|          1 | dominos        | Los angeles   |
+|          2 | Pizza Hut      | San Francisco |
+|          3 | pap johns      | san diego     |
+|          4 | ah pizza       | fromont       |
+|          5 | nino pizza     | laz vegas     |
+|          6 | pizzeria       | boston        |
+|          7 | chuck e cheese | chicago       |
++------------+----------------+---------------+
+7 rows in set (0.23 sec)
+mysql>create table item(item_id int primary key,item_name varchar(20),unit_sold int,company_id int,foreign key(company_id) references company_info(company_id));
+mysql> select * from item;
++---------+--------------+-----------+------------+
+| item_id | item_name    | unit_sold | company_id |
++---------+--------------+-----------+------------+
+|       1 | large pizza  |         5 |          2 |
+|       2 | garlic knots |         6 |          3 |
+|       3 | large pizza  |         3 |          3 |
+|       4 | medium pizza |         8 |          4 |
+|       5 | bread sticks |         7 |          1 |
+|       6 | medium pizza |        11 |          1 |
+|       7 | small pizza  |         9 |          6 |
+|       8 | small pizza  |         6 |          7 |
++---------+--------------+-----------+------------+
+8 rows in set (0.10 sec)
+mysql> select company_name,company_city,I.item_name,I.unit_sold from company_info as C  left join item as I on C.company_id=I.item_id;
++----------------+---------------+--------------+-----------+
+| company_name   | company_city  | item_name    | unit_sold |
++----------------+---------------+--------------+-----------+
+| dominos        | Los angeles   | large pizza  |         5 |
+| Pizza Hut      | San Francisco | garlic knots |         6 |
+| pap johns      | san diego     | large pizza  |         3 |
+| ah pizza       | fromont       | medium pizza |         8 |
+| nino pizza     | laz vegas     | bread sticks |         7 |
+| pizzeria       | boston        | medium pizza |        11 |
+| chuck e cheese | chicago       | small pizza  |         9 |
++----------------+---------------+--------------+-----------+
+7 rows in set (0.07 sec)
